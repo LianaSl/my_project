@@ -12,3 +12,6 @@ def about_us(request):
     return HttpResponse("About us page.")
 def hello(request, name):
     return HttpResponse(f"Hello, {name}!")
+
+def product_detail(request, id):
+    return HttpResponse(f"Product id({id})")
