@@ -6,6 +6,11 @@ def home(request):
     context = {
         "name" : "LiANA",
         "age" : 50,
+        "list" : [1,2,3,4,5,6,7,8,9,10],
+        "tuple" : (1,2,3,4,5,6,7,8,9,10),
+        "set" : {1,2,3,4,5,6,7,8,9,10},
+        "dict" : {"city": "Prague"}
+
     }
     return render(request, "shop/home.html", context)
 
@@ -19,3 +24,4 @@ def hello(request, name):
 
 def product_detail(request, id):
     return HttpResponse(f"Product id({id})")
+    /
