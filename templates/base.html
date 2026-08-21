@@ -6,12 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <header>Тут будут хедер</header>
+    <header>
+        {% include "includes/nav.html" %}
+    </header>
     <main>
         {% block main_content %}
 
         {% endblock main_content %}
     </main>
-    <footer>Тут будут футер</footer>
+    <footer>
+      {% include "includes/nav.html" %}
+    </footer>
 </body>
 </html>
