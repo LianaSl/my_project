@@ -7,5 +7,6 @@ path("", home, name='home_page'),
  path('products/', products, name='products_page'),
  path('products/<int:id>/', product_detail, name='product_detail'),
  path('about_us/', about_us, name='about_us_page'),
+ path('hello/<str:name>/', hello, name='hello_page'),
  
 ]

@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 products_list = [
-
     {
         "id": 1,
         "title": "Ноутбук",
@@ -97,11 +96,21 @@ products_list = [
     {
         "id": 14,
         "title": "Микрофон",
-        "description": "Конденсаторный микрофон для записи голоса, подкастов, стриминга и онлайн-конференций. Обеспечивает чистый звук и подходит для работы в студии или дома.",
-        "price": 1700,
+
+        "description": "Настольный USB-микрофон для записи голоса, проведения онлайн-занятий, видеоконференций, стримов и записи подкастов. Подключается напрямую к компьютеру без дополнительного оборудования.",
+        "price": 2100,
         "quantity": 5
+    },
+    {
+        "id": 15,
+        "title": "Подставка для ноутбука",
+        "description": "Регулируемая подставка для ноутбука, которая помогает расположить экран на комфортной высоте и улучшает циркуляцию воздуха вокруг устройства во время длительной работы.",
+        "price": 750,
+        "quantity": 14
     }
 ]
+
+
 def home(request):
     context = {
         "name" : "LiANA",
@@ -115,7 +124,7 @@ def home(request):
     return render(request, "shop/home.html", context)
 
 def products(request):
-    context ={
+    context = {
         "products_list": products_list
     }
     return render(request, "shop/products.html", context)
@@ -126,5 +135,11 @@ def hello(request, name):
     return HttpResponse(f"Hello, {name}!")
 
 def product_detail(request, id):
-    return HttpResponse(f"Product id({id})")
+    context = {}
+    for product in products_list:
+        if product["id"] ==id:
+            context['prod'] = product
+            return render(request, "shop/product_detail.html", context)
+
+    return render(request, "shop/product_detail.html", context)
     
