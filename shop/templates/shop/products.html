@@ -3,7 +3,7 @@
     <ul class="Products_list">
         {% for prod in products_list %}
             <li class="products_item">
-                <h1>{{ prod.title }}</h1>
+                <h1>{{ prod.title|upper}}</h1>
                 <p>{{ prod.description }}</p>
                 <span>{{ prod.price }}kč</span>
                 <span>{{ prod.quantity }}kus</span>

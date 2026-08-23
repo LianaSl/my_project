@@ -1,0 +1,16 @@
+*{
+    margin:0;
+    padding:0;
+    list-style:none;
+    text-decoration:none;
+    box-sizing:border-box;
+}
+
+body {
+       background-image: linear-gradient(
+        to right,
+        rgb(55, 122, 223),
+        rgb(99, 160, 184),
+        rgb(241, 146, 146)
+    );
+}
