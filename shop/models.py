@@ -20,6 +20,7 @@ class Products(models.Model):
     quantity = models.PositiveIntegerField()
     description = models.TextField()
     is_stock = models.BooleanField(default=True)
+   
 
     def __str__(self):
         return self.name
