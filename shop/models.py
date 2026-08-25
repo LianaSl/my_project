@@ -34,6 +34,12 @@ class Products(models.Model):
     image = models.ImageField(upload_to='shop/products/',blank=True,null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products', blank=True, null=True)
 
+
+    class Meta:
+        verbose_name = 'Products'
+        verbose_name_plural = 'Products'
+
+
     def __str__(self):
         return self.name
 
