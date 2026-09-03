@@ -1,6 +1,20 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.core.validators import FileExtensionValidator
+from django.core.exceptions import ValidationError
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+   
+
+    def __str__(self):
+        return self.name
 
 class User(AbstractUser):
     balance = models.DecimalField(
@@ -20,12 +34,24 @@ class Products(models.Model):
     quantity = models.PositiveIntegerField()
     description = models.TextField()
     is_stock = models.BooleanField(default=True)
-   
+    image = models.ImageField(
+        upload_to='shop/products/',
+        blank=True,null=True,
+        validators=[FileExtensionValidator(['jpg', 'jpeg', 'png' ])]
+        )
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products', blank=True, null=True)
+
+
+    class Meta:
+        verbose_name = 'Products'
+        verbose_name_plural = 'Products'
+
 
     def __str__(self):
         return self.name
 
-    # image = models.ImageField(upload_to='product_images/', blank=True, null=True)
+    def clean(self):
+        super().clean()    
 
-    # def __str__(self):
-    #     return self.name
+        if self.price < 0:
+            raise ValidationError("Price cannot be negative.")
